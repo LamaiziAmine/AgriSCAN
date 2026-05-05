@@ -1,0 +1,155 @@
+{
+  "Pepper__bell___Bacterial_spot": {
+    "title": "Gale Bactérienne du Poivron",
+    "risk_factors": { "temp_min": 24, "temp_max": 32, "hum_min": 80 },
+    "ideal_plant_conditions": { "temp_target": 22, "hum_target": 50 },
+    "practical_actions": [
+      "Baissez l'humidité sous 50% pour stopper la bactérie.",
+      "Supprimez les plants infectés pour éviter la contagion.",
+      "Désinfectez vos outils de taille à l'alcool."
+    ],
+    "treatment_organic": "Pulvérisation d'une solution de bicarbonate de soude."
+  },
+  "Pepper__bell___healthy": {
+    "title": "Poivron Sain",
+    "risk_factors": { "temp_min": 0, "temp_max": 0, "hum_min": 0 },
+    "ideal_plant_conditions": { "temp_target": 25, "hum_target": 60 },
+    "practical_actions": ["Rien à signaler. Maintenez l'arrosage actuel."],
+    "treatment_organic": "Aucun."
+  },
+  "Potato___Early_blight": {
+    "title": "Alternariose de la Pomme de Terre",
+    "risk_factors": { "temp_min": 24, "temp_max": 29, "hum_min": 85 },
+    "ideal_plant_conditions": { "temp_target": 20, "hum_target": 60 },
+    "practical_actions": [
+      "Supprimez les feuilles basses qui touchent le sol.",
+      "Installez un paillage pour éviter les éclaboussures de terre.",
+      "Réduisez la température si possible."
+    ],
+    "treatment_organic": "Infusion de purin d'ortie."
+  },
+  "Potato___Late_blight": {
+    "title": "Mildiou de la Pomme de Terre",
+    "risk_factors": { "temp_min": 15, "temp_max": 24, "hum_min": 80 },
+    "ideal_plant_conditions": { "temp_target": 25, "hum_target": 55 },
+    "practical_actions": [
+      "URGENT : Augmentez la ventilation pour baisser l'humidité.",
+      "Arrêtez tout arrosage par aspersion immédiatement.",
+      "Brûlez les fanes infectées."
+    ],
+    "treatment_organic": "Bouillie bordelaise (dosage léger)."
+  },
+  "Potato___healthy": {
+    "title": "Pomme de Terre Saine",
+    "risk_factors": { "temp_min": 0, "temp_max": 0, "hum_min": 0 },
+    "ideal_plant_conditions": { "temp_target": 22, "hum_target": 60 },
+    "practical_actions": ["Plante vigoureuse. Surveillez l'apparition de doryphores."],
+    "treatment_organic": "Aucun."
+  },
+  "Tomato_Bacterial_spot": {
+    "title": "Gale Bactérienne de la Tomate",
+    "risk_factors": { "temp_min": 24, "temp_max": 30, "hum_min": 75 },
+    "ideal_plant_conditions": { "temp_target": 21, "hum_target": 50 },
+    "practical_actions": [
+      "Réduisez l'humidité ambiante immédiatement.",
+      "Ne travaillez pas dans les cultures quand elles sont mouillées.",
+      "Évitez les engrais trop riches en azote."
+    ],
+    "treatment_organic": "Vinaigre de cidre dilué (1 c.à.s par litre)."
+  },
+  "Tomato_Early_blight": {
+    "title": "Alternariose de la Tomate",
+    "risk_factors": { "temp_min": 24, "temp_max": 30, "hum_min": 90 },
+    "ideal_plant_conditions": { "temp_target": 20, "hum_target": 55 },
+    "practical_actions": [
+      "Taillez les feuilles proches du sol.",
+      "Appliquez un paillage sec (paille).",
+      "Évitez les arrosages tardifs le soir."
+    ],
+    "treatment_organic": "Pulvérisation de lait dilué (antifongique naturel)."
+  },
+  "Tomato_Late_blight": {
+    "title": "Mildiou de la Tomate",
+    "risk_factors": { "temp_min": 15, "temp_max": 25, "hum_min": 85 },
+    "ideal_plant_conditions": { "temp_target": 27, "hum_target": 50 },
+    "practical_actions": [
+      "Protégez les plants de la pluie ou de l'humidité nocturne.",
+      "Effeuillez pour favoriser le passage de l'air.",
+      "Supprimez les tiges noires."
+    ],
+    "treatment_organic": "Purin de prêle."
+  },
+  "Tomato_Leaf_Mold": {
+    "title": "Moisissure Fuligineuse",
+    "risk_factors": { "temp_min": 21, "temp_max": 24, "hum_min": 85 },
+    "ideal_plant_conditions": { "temp_target": 26, "hum_target": 60 },
+    "practical_actions": [
+      "Ouvrez les serres au maximum.",
+      "Utilisez des ventilateurs pour brasser l'air.",
+      "Nettoyez les feuilles avec un chiffon humide propre."
+    ],
+    "treatment_organic": "Traitement au soufre."
+  },
+  "Tomato_Septoria_leaf_spot": {
+    "title": "Septoriose",
+    "risk_factors": { "temp_min": 20, "temp_max": 25, "hum_min": 90 },
+    "ideal_plant_conditions": { "temp_target": 26, "hum_target": 60 },
+    "practical_actions": [
+      "Désinfectez vos mains entre chaque plante.",
+      "Éliminez les mauvaises herbes autour des pieds.",
+      "Gardez le sol sec en surface."
+    ],
+    "treatment_organic": "Infusion d'ail."
+  },
+  "Tomato_Spider_mites_Two_spotted_spider_mite": {
+    "title": "Acariens (Tétranyques)",
+    "risk_factors": { "temp_min": 27, "temp_max": 40, "hum_min": 0 },
+    "ideal_plant_conditions": { "temp_target": 22, "hum_target": 70 },
+    "practical_actions": [
+      "AUGMENTEZ l'humidité (douchez les feuilles dessous).",
+      "Baissez la température : ces acariens détestent le frais.",
+      "Introduisez des coccinelles."
+    ],
+    "treatment_organic": "Huile de Neem."
+  },
+  "Tomato__Target_Spot": {
+    "title": "Tache Cible",
+    "risk_factors": { "temp_min": 20, "temp_max": 28, "hum_min": 80 },
+    "ideal_plant_conditions": { "temp_target": 24, "hum_target": 60 },
+    "practical_actions": [
+      "Ne mouillez jamais les feuilles pendant l'arrosage.",
+      "Utilisez un goutte-à-goutte.",
+      "Espacez les plants à 50cm minimum."
+    ],
+    "treatment_organic": "Bicarbonate de potassium."
+  },
+  "Tomato__Tomato_YellowLeaf__Curl_Virus": {
+    "title": "Virus de l'Enroulement Jaune",
+    "risk_factors": { "temp_min": 25, "temp_max": 40, "hum_min": 0 },
+    "ideal_plant_conditions": { "temp_target": 22, "hum_target": 60 },
+    "practical_actions": [
+      "Éliminez les mouches blanches (vecteurs du virus).",
+      "Utilisez des pièges chromatiques jaunes (collants).",
+      "Arrachez les plants jaunis pour protéger les autres."
+    ],
+    "treatment_organic": "Savon noir contre les insectes."
+  },
+  "Tomato__Tomato_mosaic_virus": {
+    "title": "Virus de la Mosaïque",
+    "risk_factors": { "temp_min": 15, "temp_max": 30, "hum_min": 0 },
+    "ideal_plant_conditions": { "temp_target": 24, "hum_target": 60 },
+    "practical_actions": [
+      "Interdiction de fumer près des plants (transmission tabac).",
+      "Désinfectez vos gants régulièrement.",
+      "Supprimez les plants suspects immédiatement."
+    ],
+    "treatment_organic": "Aucun (Prévention uniquement)."
+  },
+  "Tomato_healthy": {
+    "title": "Tomate Saine",
+    "risk_factors": { "temp_min": 0, "temp_max": 0, "hum_min": 0 },
+    "ideal_plant_conditions": { "temp_target": 24, "hum_target": 55 },
+    "practical_actions": ["Bonne gestion. Continuez la surveillance."],
+    "treatment_organic": "Aucun."
+  }
+}
