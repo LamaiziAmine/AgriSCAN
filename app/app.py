@@ -4,6 +4,7 @@ import tensorflow as tf
 from PIL import Image
 import numpy as np
 import os
+import base64
 
 # --- 1. CONFIGURATION ET CHARGEMENT ---
 st.set_page_config(page_title="AgriScan", layout="wide")
@@ -47,7 +48,7 @@ st.markdown(f"""
     }}
     .nav-bar {{
         display: flex; justify-content: space-between; align-items: center;
-        padding: 10px 5%; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px);
+        padding: 0px 3%; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px);
         position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
     }}
     .nav-btns {{ display: flex; gap: 20px; }}
@@ -66,16 +67,25 @@ st.markdown(f"""
     """, unsafe_allow_html=True)
 
 
-# --- 3. HEADER / NAVBAR ---
+def get_base64(file):
+    with open(file, "rb") as f:
+        return base64.b64encode(f.read()).decode()
+
+img_base64 = get_base64("C:\\Users\\amine\\Desktop\\Smart-Agriculture\\app\\logo.png")
+
+# --- HEADER / NAVBAR ---
 st.markdown(f"""
     <div class="nav-bar">
-        <div style="font-size: 24px; font-weight: bold;">[ LOGO PLACEHOLDER ]</div>
+        <div style="display: flex; align-items: center;">
+          <img src="data:image/png;base64,{img_base64}" style="height: 90px; margin-right: 5px;">
+          <div style="font-size: 34px; font-weight: bold;">Agri<span class="highlight">SCAN</span></div>
+        </div>
         <div class="nav-btns">
             <div class="btn-scan">SCAN</div>
             <div class="btn-login">SE CONNECTER</div>
         </div>
     </div>
-    """, unsafe_allow_html=True)
+""", unsafe_allow_html=True)
 
 # --- 4. HERO SECTION ---
 st.markdown("""
@@ -94,7 +104,7 @@ with col_setup:
     culture = st.selectbox("Choisir votre culture", ["Tomate", "Pomme de Terre", "Poivron"])
     temp = st.slider("Température actuelle (°C)", 0, 50, 25)
     hum = st.slider("Humidité (%)", 0, 100, 60)
-    img_file = st.file_uploader("Prendre une photo de la feuille", type=["jpg", "png"])
+    img_file = st.file_uploader("Prendre une photo claire de la feuille", type=["jpg", "png"])
 
 with col_result:
     st.subheader("2. Résultats de l'IA")
