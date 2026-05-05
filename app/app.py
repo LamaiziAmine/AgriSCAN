@@ -34,6 +34,11 @@ CLASS_NAMES = [
 # --- 2. STYLE CSS (TON STYLE EXACT) ---
 st.markdown(f"""
     <style>
+    header {{visibility: hidden;}}
+        
+    #MainMenu {{visibility: hidden;}}
+               
+    footer {{visibility: hidden;}}
     .stApp {{
         background-image: linear-gradient(rgba(26, 28, 20, 0.85), rgba(26, 28, 20, 0.95)), 
                           url("https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
@@ -50,6 +55,7 @@ st.markdown(f"""
     .btn-login {{ border: 1px solid #C5D145; color: #C5D145; padding: 8px 20px; border-radius: 5px; }}
     .hero {{ text-align: center; padding-top: 150px; padding-bottom: 50px; }}
     .hero h1 {{ font-size: 60px; text-transform: uppercase; letter-spacing: 2px; }}
+    .hero p {{ text-align: center; font-size: 20px; color: #BDC3C7; max-width: 700px; margin: auto; margin-top: 20px; }}
     .highlight {{ color: #C5D145; }}
     .description {{ font-size: 18px; color: #BDC3C7; max-width: 600px; margin: auto; }}
     .diag-card {{
@@ -58,6 +64,7 @@ st.markdown(f"""
     }}
     </style>
     """, unsafe_allow_html=True)
+
 
 # --- 3. HEADER / NAVBAR ---
 st.markdown(f"""
