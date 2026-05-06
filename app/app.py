@@ -12,7 +12,7 @@ st.set_page_config(page_title="AgriScan", layout="wide")
 @st.cache_resource
 def load_my_model():
     # Charge ton modèle entraîné
-    return tf.keras.models.load_model('model/plant_disease_model.h5')
+    return tf.keras.models.load_model('model/plant_disease_model.h5',compile=False)
 
 def load_data():
     base_path = os.path.dirname(__file__)
@@ -35,6 +35,10 @@ CLASS_NAMES = [
 # --- 2. STYLE CSS (TON STYLE EXACT) ---
 st.markdown(f"""
     <style>
+    html {{ scroll-behavior: smooth; }}
+            
+    section.main > div {{ scroll-behavior: smooth; }}
+    
     header {{visibility: hidden;}}
         
     #MainMenu {{visibility: hidden;}}
@@ -52,16 +56,16 @@ st.markdown(f"""
         position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
     }}
     .nav-btns {{ display: flex; gap: 20px; }}
-    .btn-scan {{ background: #C5D145; color: #1A1C14; padding: 8px 20px; border-radius: 5px; font-weight: bold; }}
+    .btn-scan {{ background: #C5D145; color: #1A1C14 !important; padding: 8px 20px; border-radius: 5px; font-weight: bold; text-decoration : none !important ; }}
     .btn-login {{ border: 1px solid #C5D145; color: #C5D145; padding: 8px 20px; border-radius: 5px; }}
-    .hero {{ text-align: center; padding-top: 150px; padding-bottom: 50px; }}
+    .hero {{ text-align: center; padding-top: 80px; padding-bottom: 50px; }}
     .hero h1 {{ font-size: 60px; text-transform: uppercase; letter-spacing: 2px; }}
     .hero p {{ text-align: center; font-size: 20px; color: #BDC3C7; max-width: 700px; margin: auto; margin-top: 20px; }}
     .highlight {{ color: #C5D145; }}
     .description {{ font-size: 18px; color: #BDC3C7; max-width: 600px; margin: auto; }}
     .diag-card {{
         background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(197, 209, 69, 0.2);
-        padding: 25px; border-radius: 15px; backdrop-filter: blur(5px);
+        padding: 25px;margin-bottom : 80px ; border-radius: 15px; backdrop-filter: blur(5px);
     }}
     </style>
     """, unsafe_allow_html=True)
@@ -71,7 +75,23 @@ def get_base64(file):
     with open(file, "rb") as f:
         return base64.b64encode(f.read()).decode()
 
-img_base64 = get_base64("C:\\Users\\amine\\Desktop\\Smart-Agriculture\\app\\logo.png")
+img_base64 = get_base64("app\logo.png")
+
+st.components.v1.html("""
+    <script>
+    const links = window.parent.document.querySelectorAll('a[href="#scan-section"]');
+
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = window.parent.document.getElementById("scan-section");
+            if (target) {
+                target.scrollIntoView({ behavior: "smooth" });
+            }
+        });
+    });
+    </script>
+""", height=0)
 
 # --- HEADER / NAVBAR ---
 st.markdown(f"""
@@ -81,7 +101,9 @@ st.markdown(f"""
           <div style="font-size: 34px; font-weight: bold;">Agri<span class="highlight">SCAN</span></div>
         </div>
         <div class="nav-btns">
-            <div class="btn-scan">SCAN</div>
+            <a href="#scan-section" class="btn-scan">
+            SCAN
+            </a>
             <div class="btn-login">SE CONNECTER</div>
         </div>
     </div>
@@ -96,7 +118,7 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # --- 5. ZONE DE DIAGNOSTIC ---
-st.markdown('<div class="diag-card">', unsafe_allow_html=True)
+st.markdown('<div id="scan-section" class="diag-card">', unsafe_allow_html=True)
 col_setup, col_result = st.columns([1, 1], gap="large")
 
 with col_setup:
