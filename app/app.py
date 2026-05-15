@@ -6,6 +6,15 @@ import numpy as np
 import os
 import base64
 
+# Initialisation de l'état de connexion
+if 'show_login' not in st.session_state:
+    st.session_state.show_login = False
+if 'login_mode' not in st.session_state:
+    st.session_state.login_mode = 'login' # 'login' ou 'signup'
+
+def toggle_login():
+    st.session_state.show_login = not st.session_state.show_login
+    
 # --- 1. CONFIGURATION ET CHARGEMENT ---
 st.set_page_config(page_title="AgriScan", layout="wide")
 
@@ -57,7 +66,7 @@ st.markdown(f"""
     }}
     .nav-btns {{ display: flex; gap: 20px; }}
     .btn-scan {{ background: #C5D145; color: #1A1C14 !important; padding: 8px 20px; border-radius: 5px; font-weight: bold; text-decoration : none !important ; }}
-    .btn-login {{ border: 1px solid #C5D145; color: #C5D145; padding: 8px 20px; border-radius: 5px; }}
+    .btn-login {{ border: 1px solid #C5D145; color: #C5D145 !important; padding: 8px 20px; border-radius: 5px; text-decoration: none !important;}}
     .hero {{ text-align: center; padding-top: 80px; padding-bottom: 50px; }}
     .hero h1 {{ font-size: 60px; text-transform: uppercase; letter-spacing: 2px; }}
     .hero p {{ text-align: center; font-size: 20px; color: #BDC3C7; max-width: 700px; margin: auto; margin-top: 20px; }}
@@ -67,6 +76,41 @@ st.markdown(f"""
         background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(197, 209, 69, 0.2);
         padding: 25px;margin-bottom : 80px ; border-radius: 15px; backdrop-filter: blur(5px);
     }}
+            
+     /* Style pour la carte de Login */
+    .auth-overlay {{
+        background: rgba(26, 28, 20, 0.98);
+        border: 2px solid #C5D145;
+        padding: 40px;
+        border-radius: 15px;
+        margin: 100px auto 20px auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center !important; /* Centralise tout */
+        text-align: center !important; /* Centre le texte */
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
+    }}
+
+    /* Force la largeur des inputs et boutons streamlit à 60% */
+    .auth-overlay div[data-testid="stTextInput"], 
+    .auth-overlay div[data-testid="stButton"] {{
+        width: 60% !important;
+    }}
+
+    .auth-title {{ color: #C5D145; font-size: 30px; font-weight: bold; margin-bottom: 30px; text-align: center; }}
+
+    .btn-back {{ 
+        background: #C5D145; 
+        color: #1A1C14 !important; 
+        padding: 10px 30px; 
+        border-radius: 5px; 
+        font-weight: bold; 
+        text-decoration: none !important; 
+        display: inline-block;
+        margin-top: 20px;
+    }}
+    
+    .auth-footer-text {{ color: #BDC3C7; margin-top: 20px; font-size: 14px; }}
     </style>
     """, unsafe_allow_html=True)
 
@@ -101,13 +145,54 @@ st.markdown(f"""
           <div style="font-size: 34px; font-weight: bold;">Agri<span class="highlight">SCAN</span></div>
         </div>
         <div class="nav-btns">
-            <a href="#scan-section" class="btn-scan">
-            SCAN
-            </a>
-            <div class="btn-login">SE CONNECTER</div>
+            <a href="#scan-section" class="btn-scan">SCAN</a>
+            <a href="/?auth=login" target="_self" class="btn-login">SE CONNECTER</a>
         </div>
     </div>
 """, unsafe_allow_html=True)
+
+# --- LOGIQUE DE CONNEXION / INSCRIPTION ---
+query_params = st.query_params
+
+if "auth" in query_params:
+    auth_mode = query_params["auth"]
+    
+    st.markdown('<div class="auth-overlay">', unsafe_allow_html=True)
+    
+    if auth_mode == "login":
+        st.markdown('<div class="auth-title">Connexion</div>', unsafe_allow_html=True)
+        st.text_input("Email", placeholder="votre@email.com", key="login_email")
+        st.text_input("Mot de passe", type="password", key="login_pass")
+        st.markdown("<br>", unsafe_allow_html=True)
+        if st.button("SE CONNECTER", key="btn_submit_login"):
+            st.success("Connexion réussie !")
+        
+        st.markdown(f"""
+            <div class="auth-footer-text">
+                Pas encore de compte ? 
+                <a href="/?auth=signup" target="_self" style="color:#C5D145;">Créer un compte</a>
+            </div>
+            <a href="/" target="_self" class="btn-back">RETOUR</a>
+        """, unsafe_allow_html=True)
+
+    elif auth_mode == "signup":
+        st.markdown('<div class="auth-title">Inscription</div>', unsafe_allow_html=True)
+        st.text_input("Nom complet", key="reg_name")
+        st.text_input("Email", key="reg_email")
+        st.text_input("Mot de passe", type="password", key="reg_pass")
+        st.markdown("<br>", unsafe_allow_html=True)
+        if st.button("S'INSCRIRE", key="btn_submit_signup"):
+            st.success("Compte créé avec succès !")
+            
+        st.markdown(f"""
+            <div class="auth-footer-text">
+                Déjà inscrit ? 
+                <a href="/?auth=login" target="_self" style="color:#C5D145;">Se connecter</a>
+            </div>
+            <a href="/" target="_self" class="btn-back">RETOUR</a>
+        """, unsafe_allow_html=True)
+        
+    st.markdown('</div>', unsafe_allow_html=True)
 
 # --- 4. HERO SECTION ---
 st.markdown("""
